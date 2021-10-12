@@ -1,27 +1,25 @@
-const express = require('express')
-const cors = require('cors')
-const morgan = require('morgan')
-const routes = require('./routes')
-const path = require('path')
+const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan');
+const routes = require('./routes');
+const path = require('path');
 
-
-const server = express()
+const server = express();
 
 //Setting
-server.set('PORT', 4500)
+server.set('PORT', 4500);
 
 //Middlewares
-server.use(express.urlencoded({ extended: false }))
-server.use(express.json())
-server.use(morgan('dev'))
-server.use(cors())
-
+server.use(express.urlencoded({ extended: false }));
+server.use(express.json());
+server.use(morgan('dev'));
+server.use(cors());
 
 //Routes
-server.use('/api/user', routes.user)
-
+server.use('/api/user', routes.user);
+server.use('/api/message', routes.message);
 
 //Public folder
-server.use(express.static(path.join(__dirname, 'static')))
+server.use(express.static(path.join(__dirname, 'static')));
 
-module.exports = server
+module.exports = server;
